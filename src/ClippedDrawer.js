@@ -72,16 +72,10 @@ class ClippedDrawer extends React.Component {
       name: contact.name,
       currentMessage:['']
     });
-    //window.scrollTo(0, this.contRef.current.height);
   };
 
-  //toBottom = () => {
-  //  alert("Scrolling to bottom ...");
-  //  window.scrollTo(0, document.body.clientHeight);
-//  }
-
   reorderContacts = () => {
-    var array = [...this.state.sortedKeys]; // make a separate copy of the array
+    var array = [...this.state.sortedKeys];
     array = this.state.sortedKeys.filter(key => key != this.state.key);
     console.log(array);
     array.unshift(this.state.key);
