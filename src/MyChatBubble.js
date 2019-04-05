@@ -32,8 +32,8 @@ class MyChatBubble extends React.Component {
         </Grid>
       </Grid>
     );
-  }
-}
+  };
+};
 
 MyChatBubble.propTypes = {
   classes: PropTypes.object.isRequired,

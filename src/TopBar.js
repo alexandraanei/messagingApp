@@ -56,7 +56,7 @@ function TopBar(props)
 
       </Toolbar>
     </AppBar>
-  )
+  );
 };
 
 TopBar.propTypes = {

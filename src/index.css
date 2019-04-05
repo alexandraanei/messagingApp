@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .chatBubble {
-  background:#fff;
-  padding:10px;
+  background: #fff;
+  padding: 10px;
   border-radius: 0 12px 12px 12px;
   font-family: "Roboto";
   font-size: 12px;
-  min-width:10em;
+  min-width: 10em;
 }
 
 .myChatBubble {
-  background:#fff;
-  padding:10px;
+  background: #fff;
+  padding: 10px;
   border-radius: 12px 0px 12px 12px;
   font-family: "Roboto";
   font-size: 12px;
-  min-width:10em;
+  min-width: 10em;
 }
 
 body {

@@ -79,4 +79,4 @@ const contactList = [
     }
 ];
 
-export default contactList
+export default contactList;

@@ -13,10 +13,15 @@ const styles = theme => ({
     fontFamily: "Roboto",
     fontSize: 12,
     color: '#999',
-    width: 75
+    width: 75,
+    textAlign: 'right'
   },
   text: {
-    maxWidth: 150,
+    width: 150,
+    height: 45,
+    overflow: 'hidden',
+    textOverflow:'ellipsis',
+    whiteSpace: 'nowrap'
   }
 });
 

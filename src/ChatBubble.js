@@ -13,12 +13,12 @@ function ChatBubble(props) {
           <Avatar alt="alt" src={props.avatarSRC} />
         </Grid>
         <Grid item>
-          <Typography className={"chatBubble"}>{props.chatLine}</Typography>
-          <div className={props.dateClass}>{distanceInWordsToNow(new Date(props.chatDate))} ago</div>
+          <Typography className={"chatBubble"} >{props.chatLine}</Typography>
+          <div className={props.dateClass} >{distanceInWordsToNow(new Date(props.chatDate))} ago</div>
         </Grid>
       </Grid>
   );
-}
+};
 
 ChatBubble.propTypes = {
   classes: PropTypes.object.isRequired,

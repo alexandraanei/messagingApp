@@ -27,8 +27,8 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     width:'60em',
     '&:after': {
-      borderBottom: "2px solid #1ba261",
-   },
+      borderBottom: "1px solid #1ba261",
+    },
   },
 });
 
@@ -39,20 +39,18 @@ class BottomBar extends React.Component {
 
   handleTextChange = (event) => {
     this.setState({ text: event.target.value });
-  }
+  };
 
   handleKeyPressed = (event) => {
     if (event.key === "Enter") {
       this.props.onMessageSubmitted(this.state.text);
       this.setState({ text: '' });
     }
-  }
+  };
 
   render() {
     const { classes } = this.props;
-      console.log(this.state.text);
     return (
-
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
 
@@ -74,9 +72,9 @@ class BottomBar extends React.Component {
 
         </Toolbar>
       </AppBar>
-    )
-  }
-}
+    );
+  };
+};
 
 BottomBar.propTypes = {
   classes: PropTypes.object.isRequired,

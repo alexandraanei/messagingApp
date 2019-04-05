@@ -63,7 +63,7 @@ class ClippedDrawer extends React.Component {
     ],
     currentMessage:[''],
     sortedKeys:['1','2','3','4','5','6']
-  }
+  };
 
   handleClick = contact => () => {
     this.setState({
@@ -75,81 +75,86 @@ class ClippedDrawer extends React.Component {
   };
 
   reorderContacts = () => {
-    var array = [...this.state.sortedKeys];
+    let array = [...this.state.sortedKeys];
     array = this.state.sortedKeys.filter(key => key != this.state.key);
-    console.log(array);
     array.unshift(this.state.key);
     this.setState({sortedKeys: array});
-}
+  };
 
   handleMessageSubmitted = (message) => {
     this.handleMessageSaveProcess(this.state.key, message);
     this.reorderContacts();
-    }
+  };
 
   handleMessageSaveProcess(id, newMessage) {
     this.setState(prevState => ({
       ...prevState,
       myMessages: prevState.myMessages.map(myMessage => ({
         ...myMessage,
-        messages: myMessage.id === id ?  myMessage.messages.concat(newMessage) : myMessage.messages,
-        messagesDate:  myMessage.id === id ? myMessage.messagesDate.concat(new Date()) : myMessage.messagesDate
+        messages: myMessage.id === id
+          ?  myMessage.messages.concat(newMessage)
+          : myMessage.messages,
+        messagesDate:  myMessage.id === id
+          ? myMessage.messagesDate.concat(new Date())
+          : myMessage.messagesDate
      }))
-    }))
-  }
+   }));
+  };
 
   render() {
    const { classes } = this.props;
-   console.log(this.state.sortedKeys);
-    return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <TopBar contactName={this.state.name} />
-        <Drawer className={classes.drawer} variant="permanent" classes={{paper: classes.drawerPaper}} >
-          <div className={classes.toolbar} />
-          <List>
-            <ListItem button >
-              <ListItemIcon>
-                <Fab size="medium" color="secondary" aria-label="Add" className={classes.addButton} >
-                  <AddIcon />
-                </Fab>
-              </ListItemIcon>
-              <ListItemText primary="New conversation" />
-            </ListItem>
-            {
-              this.state.sortedKeys.map(currentKey => (
-                <Contact
-                  key={currentKey}
-                  onClick={this.handleClick(contactList[currentKey-1])}
-                  avatarSRC={contactList[currentKey-1].avatar}
-                  contactName={contactList[currentKey-1].name}
-                  lastMessage={
-                    this.state.myMessages[contactList[currentKey-1].id - 1].messages[this.state.myMessages[contactList[currentKey-1].id - 1].messages.length - 1] ?
-                    ("You: " +  this.state.myMessages[contactList[currentKey-1].id - 1].messages[this.state.myMessages[contactList[currentKey-1].id - 1].messages.length - 1]) :
-                    (contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][0] === "1" ? contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][1] : "You: " +  contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][1])
-                  }
-                  date={
-                    this.state.myMessages[contactList[currentKey-1].id - 1].messages[this.state.myMessages[contactList[currentKey-1].id - 1].messages.length - 1] ?
-                    this.state.myMessages[contactList[currentKey-1].id - 1].messagesDate[this.state.myMessages[contactList[currentKey-1].id - 1].messagesDate.length - 1] :
-                    new Date(contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][2])
-                  }
-                  />
-              ))
-            }
-          </List>
-        </Drawer>
-        <main className={classes.content} >
-          <div className={classes.toolbar} />
-          <Container
-            convo={this.state.contact}
-            newMessage={this.state.myMessages[this.state.key - 1].messages}
-            newMessageDates={this.state.myMessages[this.state.key - 1].messagesDate}
-          />
-          <BottomBar onMessageSubmitted={this.handleMessageSubmitted} />
-        </main>
-      </div>
+   return (
+     <div className={classes.root}>
+       <CssBaseline />
+       <TopBar contactName={this.state.name} />
+       <Drawer className={classes.drawer} variant="permanent" classes={{paper: classes.drawerPaper}} >
+         <div className={classes.toolbar} />
+         <List>
+           <ListItem button >
+             <ListItemIcon>
+               <Fab size="medium" color="secondary" aria-label="Add" className={classes.addButton} >
+                 <AddIcon />
+               </Fab>
+             </ListItemIcon>
+             <ListItemText primary="New conversation" />
+           </ListItem>
+           {
+             this.state.sortedKeys.map(currentKey => (
+               <Contact
+                 key={currentKey}
+                 onClick={this.handleClick(contactList[currentKey-1])}
+                 avatarSRC={contactList[currentKey-1].avatar}
+                 contactName={contactList[currentKey-1].name}
+                 lastMessage={
+                   this.state.myMessages[contactList[currentKey-1].id - 1].messages[this.state.myMessages[contactList[currentKey-1].id - 1].messages.length - 1]
+                    ? ("You: " +  this.state.myMessages[contactList[currentKey-1].id - 1].messages[this.state.myMessages[contactList[currentKey-1].id - 1].messages.length - 1])
+                    : (contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][0] === "1"
+                        ? contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][1]
+                        : "You: " +  contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][1]
+                      )
+                 }
+                 date={
+                   this.state.myMessages[contactList[currentKey-1].id - 1].messages[this.state.myMessages[contactList[currentKey-1].id - 1].messages.length - 1]
+                    ? this.state.myMessages[contactList[currentKey-1].id - 1].messagesDate[this.state.myMessages[contactList[currentKey-1].id - 1].messagesDate.length - 1]
+                    : new Date(contactList[currentKey-1].text[contactList[currentKey-1].text.length - 1][2])
+                 }
+                 />
+             ))
+           }
+         </List>
+       </Drawer>
+       <main className={classes.content} >
+         <div className={classes.toolbar} />
+         <Container
+           convo={this.state.contact}
+           newMessage={this.state.myMessages[this.state.key - 1].messages}
+           newMessageDates={this.state.myMessages[this.state.key - 1].messagesDate}
+         />
+         <BottomBar onMessageSubmitted={this.handleMessageSubmitted} />
+       </main>
+     </div>
     );
-  }
+  };
 };
 
 ClippedDrawer.propTypes = {
