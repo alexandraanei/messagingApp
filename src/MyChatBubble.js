@@ -10,7 +10,7 @@ import { distanceInWordsToNow } from 'date-fns';
 class MyChatBubble extends React.Component {
   state = {
     time: distanceInWordsToNow(this.props.chatDate),
-  }
+  };
 
   componentDidMount() {
     setInterval(() => {
@@ -18,7 +18,7 @@ class MyChatBubble extends React.Component {
         time: distanceInWordsToNow(this.props.chatDate),
       });
     }, 1000);
-  }
+  };
 
   render() {
     return (

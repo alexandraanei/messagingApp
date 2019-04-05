@@ -28,7 +28,7 @@ const styles = theme => ({
 class Contact extends React.Component {
   state = {
     time: distanceInWordsToNow(this.props.date)
-  }
+  };
 
   componentDidMount() {
     setInterval(() => {
@@ -36,7 +36,7 @@ class Contact extends React.Component {
         time: distanceInWordsToNow(this.props.date),
       });
     }, 1000);
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -52,8 +52,8 @@ class Contact extends React.Component {
           secondary={this.props.lastMessage} />
         <div className={classes.date}>{this.state.time} ago</div>
       </ListItem>
-    )
-  }
+    );
+  };
 };
 
 Contact.propTypes = {
